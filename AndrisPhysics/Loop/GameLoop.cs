@@ -260,7 +260,7 @@ namespace AndrisPhysics.Loop
             activeObjects.Add(go);
         }
 
-        public void Destory(GameObject go)
+        public void Destroy(GameObject go)
         {
             _gameObjectsToRemove.Add(go);
         }

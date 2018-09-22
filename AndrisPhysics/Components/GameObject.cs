@@ -108,7 +108,7 @@ namespace AndrisPhysics.Components
 
         public virtual void Destory()
         {
-            gameLoop.Destory(this);
+            gameLoop.Destroy(this);
         }
 
     }
