@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AndrisPhysics.Common;
 using AndrisPhysics.Components;
+using AndrisPhysics.Configuration;
 
 namespace AndrisPhysics.Loop
 {
@@ -18,8 +19,7 @@ namespace AndrisPhysics.Loop
         private readonly List<Invokable> _invokables = new List<Invokable>();
         private readonly List<GameObject> _gameObjectsToRemove = new List<GameObject>();
 
-        private const int FRAME_CAP = 500;
-        private const float MILLIS_PER_SECOND = 1000f / FRAME_CAP;
+        private static readonly float MillisPerSecond = 1000f / Settings.targetFrameRate;
 
         public float DeltaTime => _deltaTime / 1000f;
         public float Time => time / 1000f;
@@ -48,7 +48,7 @@ namespace AndrisPhysics.Loop
 
         public void Update()
         {
-            if (DateTimeOffset.Now.ToUnixTimeMilliseconds() - _startTime - time < Math.Floor(MILLIS_PER_SECOND)) return;
+            if (DateTimeOffset.Now.ToUnixTimeMilliseconds() - _startTime - time < Math.Floor(MillisPerSecond)) return;
             CalculateTime();
 
             if (_lastTime < Time)
@@ -78,6 +78,7 @@ namespace AndrisPhysics.Loop
             if (shouldDrawToConsole)
             {
                 Console.Clear();
+
                 foreach (var gameObject in activeObjects)
                 {
                     gameObject.Draw();

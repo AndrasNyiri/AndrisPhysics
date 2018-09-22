@@ -21,7 +21,7 @@ namespace AndrisPhysics.Components
         public string name;
         public long id;
 
-        public GameObject(float x, float y, string name = "")
+        public GameObject(float x, float y, string name = "", params Component[] initComponents)
         {
             this.name = name;
             if (string.IsNullOrEmpty(name))
@@ -29,7 +29,10 @@ namespace AndrisPhysics.Components
                 this.name = GetType().ToString();
             }
             transform = new Transform(x, y, this);
-            this.gameLoop.RegisterGameObject(this);
+            foreach (var component in initComponents)
+            {
+                AddComponent(component);
+            }
         }
 
         public void Assign(GameLoop gl)
@@ -49,16 +52,19 @@ namespace AndrisPhysics.Components
             }
         }
 
-        public void AddComponent(Component component)
+        public GameObject AddComponent(Component component)
         {
             component.Assign(this);
             this.components.Add(component);
+            return this;
         }
 
-        public void AddComponent<T>() where T : Component, new()
+        public GameObject AddComponent<T>() where T : Component, new()
         {
             T newComponent = new T();
+            newComponent.Assign(this);
             this.components.Add(newComponent);
+            return this;
         }
 
         public T GetComponent<T>() where T : Component
@@ -78,7 +84,7 @@ namespace AndrisPhysics.Components
             {
                 BoxCollider boxCollider = GetComponent<BoxCollider>();
                 if (boxCollider == null) return;
-                Vector2 origin = new Vector2(40, 40);
+                Vector2 origin = new Vector2(25, 25);
 
                 Vector2 topLeft = origin + new Vector2((float)Math.Floor(transform.position.x - boxCollider.Radius), (float)Math.Ceiling(-boxCollider.Top.y));
                 Console.SetCursorPosition((int)topLeft.x, (int)topLeft.y);
