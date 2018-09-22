@@ -8,4 +8,8 @@
     <OutputPath>C:\Users\Andris\Source\Repos\AllInOneGameServer\ExternalReferences\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Users\Andris\Source\Repos\AllInOneGameServer\ExternalReferences\</OutputPath>
+  </PropertyGroup>
+
 </Project>

@@ -85,25 +85,31 @@ namespace AndrisPhysics.Loop
                 }
             }
 
-            foreach (var gameObject in _gameObjectsToRemove)
+            if (_gameObjectsToRemove.Count > 0)
             {
-                activeObjects.Remove(gameObject);
+                foreach (var gameObject in _gameObjectsToRemove)
+                {
+                    activeObjects.Remove(gameObject);
+                }
+                _gameObjectsToRemove.Clear();
             }
-
-            _gameObjectsToRemove.Clear();
         }
 
         public void CheckCollision(GameObject gameObject, bool invokeOnCollided = true)
         {
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-            if (rigidbody.isKinematic) return;
+            if (rigidbody == null || rigidbody.isKinematic) return;
             BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
             rigidbody.isOnGround = false;
             foreach (var go in activeObjects)
             {
                 BoxCollider goBoxCollider = go.GetComponent<BoxCollider>();
                 Rigidbody goRigidbody = go.GetComponent<Rigidbody>();
-                if (gameObject == go || boxCollider.CollidesWith(goBoxCollider) == Direction.Null) continue;
+                if (goBoxCollider == null ||
+                    goRigidbody == null ||
+                    gameObject == go ||
+                    boxCollider.CollidesWith(goBoxCollider) == Direction.Null) continue;
+
                 if (invokeOnCollided)
                 {
                     gameObject.InvokeCollidedDelegate(go);
