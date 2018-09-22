@@ -21,16 +21,20 @@ namespace AndrisPhysics.Components
         public string name;
         public long id;
 
-        public GameObject(GameLoop gameLoop, float x, float y, string name = "")
+        public GameObject(float x, float y, string name = "")
         {
             this.name = name;
             if (string.IsNullOrEmpty(name))
             {
                 this.name = GetType().ToString();
             }
-            this.gameLoop = gameLoop;
             transform = new Transform(x, y, this);
             this.gameLoop.RegisterGameObject(this);
+        }
+
+        public void Assign(GameLoop gl)
+        {
+            this.gameLoop = gl;
         }
 
         public virtual void Update()

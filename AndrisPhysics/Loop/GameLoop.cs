@@ -257,6 +257,7 @@ namespace AndrisPhysics.Loop
         public void RegisterGameObject(GameObject go)
         {
             go.id = _idCounter++;
+            go.Assign(this);
             activeObjects.Add(go);
         }
 
