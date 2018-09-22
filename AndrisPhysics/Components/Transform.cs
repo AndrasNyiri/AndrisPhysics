@@ -2,7 +2,7 @@
 
 namespace AndrisPhysics.Components
 {
-    class Transform
+    public class Transform
     {
         public GameObject gameObject;
         public Vector2 position;

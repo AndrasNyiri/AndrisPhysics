@@ -1,10 +1,9 @@
 ﻿using AndrisPhysics.Common;
 using AndrisPhysics.Configuration;
-using AndrisPhysics.Loop;
 
 namespace AndrisPhysics.Components
 {
-    class Rigidbody : Component
+    public class Rigidbody : Component
     {
         public float gravityModifier = 3.5f;
         public float mass;

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using AndrisPhysics.Common;
 using AndrisPhysics.Configuration;
 using AndrisPhysics.Loop;
 
 namespace AndrisPhysics.Components
 {
-    class GameObject
+    public class GameObject
     {
         public delegate void OnCollidedWithGameObjectDelegate(GameObject go);
         public delegate void OnBelowGroundDelegate();

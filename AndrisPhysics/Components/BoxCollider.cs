@@ -3,7 +3,7 @@ using AndrisPhysics.Common;
 
 namespace AndrisPhysics.Components
 {
-    class BoxCollider : Component
+    public class BoxCollider : Component
     {
         public float Radius { get; }
         public float Height { get; }

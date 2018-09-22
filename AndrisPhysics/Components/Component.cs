@@ -1,6 +1,6 @@
 ﻿namespace AndrisPhysics.Components
 {
-    internal abstract class Component
+    public abstract class Component
     {
         public GameObject gameObject;
 

@@ -2,7 +2,7 @@
 
 namespace AndrisPhysics.Common
 {
-    class RaycastHit
+    public class RaycastHit
     {
         public GameObject go;
         public Vector2 point;

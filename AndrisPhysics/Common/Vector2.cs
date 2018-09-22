@@ -2,7 +2,7 @@
 
 namespace AndrisPhysics.Common
 {
-    class Vector2
+    public class Vector2
     {
         private const double DEG_TO_RAD = Math.PI / 180;
 

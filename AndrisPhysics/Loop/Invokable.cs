@@ -2,7 +2,7 @@
 
 namespace AndrisPhysics.Loop
 {
-    class Invokable
+    public class Invokable
     {
         private GameLoop _gameLoop;
         private long _deltaSum;

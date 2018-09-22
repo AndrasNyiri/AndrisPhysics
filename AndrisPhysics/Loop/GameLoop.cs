@@ -6,7 +6,7 @@ using AndrisPhysics.Components;
 
 namespace AndrisPhysics.Loop
 {
-    class GameLoop
+    public class GameLoop
     {
         public bool shouldDrawToConsole = false;
         public long time;
