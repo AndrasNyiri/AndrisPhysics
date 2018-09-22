@@ -55,6 +55,12 @@ namespace AndrisPhysics.Components
             this.components.Add(component);
         }
 
+        public void AddComponent<T>() where T : Component, new()
+        {
+            T newComponent = new T();
+            this.components.Add(newComponent);
+        }
+
         public T GetComponent<T>() where T : Component
         {
             foreach (var x in this.components)
