@@ -55,16 +55,16 @@ namespace AndrisPhysics.Components
             this.components.Add(component);
         }
 
-        public T GetComponent<T>()
+        public T GetComponent<T>() where T : Component
         {
             foreach (var x in this.components)
             {
                 if (!(x is T)) continue;
-                return (T)Convert.ChangeType(x, typeof(T));
+                return (T)x;
             }
-
             return default(T);
         }
+
 
         public virtual void Draw()
         {
